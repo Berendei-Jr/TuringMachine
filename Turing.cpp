@@ -1,6 +1,4 @@
-//
-// Created by hellcat on 2/23/22.
-//
+// Copyright 2022 Andrey Vedeneev vedvedved2003@gmail.com
 
 #include "Turing.h"
 
@@ -57,14 +55,17 @@ std::string turing::machine::Run() {
     bool stop = false;
     while (!stop)
     {
+        if ((m_cur_index == m_tape.size() - 1) || (m_cur_index == 0))
+            throw std::runtime_error("Tape overflow");
         stop = true;
         for (auto& it : (*m_program).m_commands)
         {
-            if (it.first_state == m_cur_state && it.first_symbol == m_tape[m_cur_index])
+            if (it.first_state == m_cur_state && ((it.first_symbol == m_tape[m_cur_index]) || it.first_symbol == '%') )
             {
                 stop = false;
                 m_cur_state = it.second_state;
-                m_tape[m_cur_index] = it.second_symbol;
+                if (it.second_symbol != '%')
+                    m_tape[m_cur_index] = it.second_symbol;
                 if (it.direction == 'R') {
                     m_cur_index++;
                 } else if (it.direction == 'L') {
@@ -72,6 +73,7 @@ std::string turing::machine::Run() {
                 }
                 break;
             }
+
         }
     }
 

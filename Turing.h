@@ -1,4 +1,4 @@
-// Created by hellcat on 2/23/22.
+// Copyright 2022 Andrey Vedeneev vedvedved2003@gmail.com
 
 #ifndef TURING_H
 #define TURING_H
