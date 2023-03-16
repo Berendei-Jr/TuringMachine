@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.12)
-project(TuringMachine)
+project(turing_runner)
 
-set(CMAKE_CXX_STANDARD 17)
+add_subdirectory(turing_lib)
 
-add_executable(turing example.cpp Turing.cpp Turing.h)
+add_executable(${PROJECT_NAME} example.cpp)
+target_link_libraries(${PROJECT_NAME} turing)

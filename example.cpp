@@ -3,7 +3,7 @@
 // Symbol "/" means EMPTY symbol
 // Symbol "%" means ANY symbol
 
-#include "Turing.h"
+#include "turing_lib/Turing.h"
 
 int main() {
     turing::program PR = {
